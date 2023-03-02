@@ -5,11 +5,12 @@ import ensureTokensIsValidMiddleware from '../middlewares/ensureTokenIsValid.mid
 import ensureUserExistsMiddleware from '../middlewares/ensureUserExists.middleware'
 import isAdminOrNotMiddleware from '../middlewares/ensureIsAdminOrNot.middleware'
 import { userCreateSchema, userUpdateSchema } from '../schemas/users.schemas'
+import isAdminMiddleware from '../middlewares/ensureIsAdmin.middleware'
 
 const userRoutes: Router = Router()
 
 userRoutes.post('', ensureDataIsValidMiddleware(userCreateSchema), createUserController)
-userRoutes.get('', ensureTokensIsValidMiddleware, readUsersController)
+userRoutes.get('', ensureTokensIsValidMiddleware, isAdminMiddleware, readUsersController)
 userRoutes.patch('/:id', ensureDataIsValidMiddleware(userUpdateSchema), ensureTokensIsValidMiddleware, ensureUserExistsMiddleware, isAdminOrNotMiddleware, updateUserController)
 userRoutes.delete('/:id', ensureTokensIsValidMiddleware, ensureUserExistsMiddleware, isAdminOrNotMiddleware, deleteUserController)
 
