@@ -6,7 +6,7 @@ const isAdminOrNotMiddleware = async (req: Request, res: Response, next: NextFun
     const authenticateUser = req.user
 
     if(authenticateUser.admin !== true && authenticateUser.id !== +req.params.id){
-        throw new AppError('User don`t have permission', 403)
+        throw new AppError('Insufficient permission', 403)
     }
 
     return next()

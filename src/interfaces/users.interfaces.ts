@@ -9,7 +9,7 @@ import {
 type ICreateUser = z.infer<typeof userCreateSchema>
 type IUser = z.infer<typeof returnUserSchema>
 type IUpUser = z.infer<typeof userUpdateSchema>
-type IUserUpdate = DeepPartial<IUpUser>
+type IUserUpdate = DeepPartial<ICreateUser>
 
 export {
     ICreateUser,

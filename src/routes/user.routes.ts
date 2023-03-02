@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createUserController, readUsersController, updateUserController } from '../controllers/users.controllers'
+import { createUserController, deleteUserController, readUsersController, updateUserController } from '../controllers/users.controllers'
 import ensureDataIsValidMiddleware from '../middlewares/ensureDataIsValid.middleware'
 import ensureTokensIsValidMiddleware from '../middlewares/ensureTokenIsValid.middleware'
 import ensureUserExistsMiddleware from '../middlewares/ensureUserExists.middleware'
@@ -11,5 +11,6 @@ const userRoutes: Router = Router()
 userRoutes.post('', ensureDataIsValidMiddleware(userCreateSchema), createUserController)
 userRoutes.get('', ensureTokensIsValidMiddleware, readUsersController)
 userRoutes.patch('/:id', ensureDataIsValidMiddleware(userUpdateSchema), ensureTokensIsValidMiddleware, ensureUserExistsMiddleware, isAdminOrNotMiddleware, updateUserController)
+userRoutes.delete('/:id', ensureTokensIsValidMiddleware, ensureUserExistsMiddleware, isAdminOrNotMiddleware, deleteUserController)
 
 export default userRoutes
