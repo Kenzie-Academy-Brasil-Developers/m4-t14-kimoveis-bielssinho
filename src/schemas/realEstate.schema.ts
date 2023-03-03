@@ -16,7 +16,7 @@ const returnAdrressSchema = createAddressSchema.extend({
 const returnRealEstateSchema = z.object({
     id: z.number(),
     sold: z.boolean().default(false),
-    value: z.number(),
+    value: z.string(),
     size: z.number().int(),
     address: returnAdrressSchema,
     createdAt: z.string(),
@@ -30,10 +30,13 @@ const createRealEstateSchema = z.object({
     categoryId: z.number()
 })
 
+const returnMultRealEstateSchema = returnRealEstateSchema.array()
+
 
 export {
     createRealEstateSchema,
     returnRealEstateSchema,
     createAddressSchema,
-    returnAdrressSchema
+    returnAdrressSchema,
+    returnMultRealEstateSchema
 }
