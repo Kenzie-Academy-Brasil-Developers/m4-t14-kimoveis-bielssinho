@@ -19,18 +19,13 @@ class Address {
     zipCode: string
 
     @Column('varchar', { length: 6, nullable: true })
-    number: string
+    number: string | null
 
     @Column('varchar', { length: 20 })
     city: string
 
     @Column('varchar', { length: 2 })
     state: string 
-
-    @AfterLoad()
-    upperCaseFields(){
-        this.state = this.state.toUpperCase()
-    }
 
 }
 

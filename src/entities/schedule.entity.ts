@@ -13,7 +13,7 @@ class Schedule {
     id: number
 
     @Column('date')
-    date: Date
+    date: string
 
     @Column('time')
     hour: string

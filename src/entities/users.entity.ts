@@ -25,20 +25,20 @@ class User {
     @Column('varchar', { length: 45, unique: true })
     email: string
 
-    @Column('boolean')
+    @Column('boolean', { default: false })
     admin: boolean
 
     @Column('varchar', { length: 120 })
     password: string
 
-    @CreateDateColumn()
-    createdAt: Date
+    @CreateDateColumn({type:'date'})
+    createdAt: string
 
-    @UpdateDateColumn()
-    updatedAt: Date
+    @UpdateDateColumn({type:'date'})
+    updatedAt: string
 
-    @DeleteDateColumn()
-    deletedAt: Date
+    @DeleteDateColumn({type:'date'})
+    deletedAt: string
 
     @OneToMany(() => Schedule, sched => sched.user)
     schedules: Schedule[]
