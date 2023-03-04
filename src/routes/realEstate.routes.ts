@@ -10,4 +10,5 @@ const realEstateRouter: Router = Router()
 realEstateRouter.post('', ensureDataIsValidMiddleware(createRealEstateSchema), ensureTokensIsValidMiddleware, isAdminMiddleware, createRealEstateController)
 realEstateRouter.get('', readRealEstateController)
 
+
 export default realEstateRouter
