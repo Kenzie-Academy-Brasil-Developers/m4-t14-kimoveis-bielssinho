@@ -27,7 +27,7 @@ const createRealEstateSchema = z.object({
     value: z.number(),
     size: z.number().int(),
     address: createAddressSchema,
-    categoryId: z.number()
+    category: z.number()
 })
 
 const returnMultRealEstateSchema = returnRealEstateSchema.array()

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createCategoryController, readCategoryController } from '../controllers/category.controller'
+import { createCategoryController, readCategoryController, readCategoryWithRealEstateByIdController } from '../controllers/category.controller'
 import ensureDataIsValidMiddleware from '../middlewares/ensureDataIsValid.middleware'
 import isAdminMiddleware from '../middlewares/ensureIsAdmin.middleware'
 import ensureTokensIsValidMiddleware from '../middlewares/ensureTokenIsValid.middleware'
@@ -9,6 +9,7 @@ const categoryRouter: Router = Router()
 
 categoryRouter.post('', ensureDataIsValidMiddleware(createCategorySchema), ensureTokensIsValidMiddleware, isAdminMiddleware, createCategoryController)
 categoryRouter.get('', readCategoryController)
+categoryRouter.get('/:id/realEstate', readCategoryWithRealEstateByIdController)
 
 export {
     categoryRouter
