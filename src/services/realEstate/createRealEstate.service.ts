@@ -6,7 +6,7 @@ import { ICreateAddress, ICreateRealEstate } from '../../interfaces/realEstate.i
 
 
 
-const createRealEstateService = async (realEstateData: ICreateRealEstate ): Promise<object> => {
+const createRealEstateService = async (realEstateData: any ): Promise<object> => {
     
     const addRealEstateData: ICreateAddress = realEstateData.address
 
@@ -31,9 +31,9 @@ const createRealEstateService = async (realEstateData: ICreateRealEstate ): Prom
 
     await addressRepository.save(newAddress)
 
-    if(realEstateData.categoryId){
+    if(realEstateData.category){
         const findCategory = await categoryRepository.findOneBy({
-            id: realEstateData.categoryId!
+            id: realEstateData.category!
         })
         if(!findCategory){
             throw new AppError('Category not found', 404)

@@ -17,7 +17,7 @@ const createCategoryService = async (categoryData: ICreateCategory): Promise<ICa
     })
 
     if(findCategory){
-        throw new AppError('category already exists.', 409)
+        throw new AppError('Category already exists', 409)
     }
 
     const category: Category = categoryRepository.create(categoryData)

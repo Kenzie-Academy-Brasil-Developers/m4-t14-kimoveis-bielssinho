@@ -33,7 +33,7 @@ class RealEstate {
     @JoinColumn()
     address: Address
 
-    @ManyToOne(() => Category, category => category.categories)
+    @ManyToOne(() => Category, category => category.realEstate)
     category: Category
 
     @OneToMany(() => Schedule, sched => sched.realEstate)
