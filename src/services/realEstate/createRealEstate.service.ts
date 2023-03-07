@@ -6,22 +6,13 @@ import { ICreateAddress, ICreateRealEstate } from '../../interfaces/realEstate.i
 
 
 
-const createRealEstateService = async (realEstateData: any ): Promise<object> => {
+const createRealEstateService = async (realEstateData: ICreateRealEstate ): Promise<object> => {
     
     const addRealEstateData: ICreateAddress = realEstateData.address
 
     const realEstateRepository: Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
     const addressRepository: Repository<Address> = AppDataSource.getRepository(Address)
     const categoryRepository: Repository<Category> = AppDataSource.getRepository(Category)
-    
-    // const addressExistsWithNumber = await addressRepository.createQueryBuilder('address').
-    // select('address').
-    // where('address.street = :street', { street: addRealEstateData.street }).
-    // andWhere('address.zipCode = :zipCode', { zipCode: addRealEstateData.zipCode }).    
-    // andWhere('address.number = :number OR address.number IS NULL', { number: addRealEstateData.number }).    
-    // andWhere('address.city = :city', { city: addRealEstateData.city }).    
-    // andWhere('address.state = :state', { state: addRealEstateData.state }).
-    // getOne()
     
     const addressExists = await addressRepository.findOne({
         where: {
